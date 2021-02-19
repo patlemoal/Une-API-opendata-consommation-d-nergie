@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <form method="POST" action="http://127.0.0.1:5000/suppression">
+        <label>Veuillez entrer un Id de document à supprimer :</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">id</span>
+                <input type="text" class="form-control"  name="id" aria-label="Username" aria-describedby="addon-wrapping"  value="" required>
+                <button type="submit" class="btn btn-danger" type="button" id="button-addon2">SUPPRIMER</button>
+            </div>
+    </form>
+    <a href="{{url_for('index')}}"><button class="btn btn-primary">Retour à l'accueil</button></a>
+
+{% endblock %}

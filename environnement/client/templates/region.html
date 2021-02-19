@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Region : {{ region_name }}</h2>
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Gaz
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+            {% for dep in departement %}
+                <a class="btn btn-primary" href="{{url_for('dep_conso', sector='Gaz', departement=dep)}}" role="button">{{dep}}</a>
+            {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Electricité
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {% for dep in departement %}
+        <a class="btn btn-primary" href="{{url_for('dep_conso', sector='Electricité', departement=dep)}}" role="button">{{dep}}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description"></p>
+  
+    <table id="datatable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Gaz</th>
+          <th>Electricité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>{{ region_name }}</th>
+          <td>{{ conso_region_gaz }}</td>
+          <td>{{ conso_region_elec }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </figure>
+<a href="{{url_for('index')}}"><button class="btn btn-primary">Retour à l'accueil</button></a>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{% endblock %}

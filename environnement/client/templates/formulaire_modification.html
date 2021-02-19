@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form action="http://127.0.0.1:5000/document/traitement" method="POST">
+        {% for elt in data %}
+            {% if elt == "_id" %}
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Document numéro:</span>
+                <input type="text" class="form-control"  name="id" placeholder="Entrez un ID" aria-label="Username" aria-describedby="addon-wrapping"  value="{{ data[elt] }}" required>
+            </div>
+            {% endif %}
+
+            {% if elt == "fields" %}
+                {% for champ in data[elt] %}
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">{{champ}}: </span>
+                    <input type="text" class="form-control"  name="fields.{{champ}}" aria-describedby="addon-wrapping"  value="{{data[elt][champ]}}" required>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <button type="submit" class="btn btn-outline-danger" type="button" id="button-addon2">Submit</button>
+    </form>
+
+{% endblock %}
+
+
+
+

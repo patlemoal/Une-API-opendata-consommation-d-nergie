@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ sector }}</h1>
+<div>
+    <h2> En 2019, la consommation totale sur la filière {{ sector }} a été de : <span class="badge bg-warning text-dark">{{ sector_conso }} MWh</span></h2>
+</div>
+<h2>Détail des données</h2>
+
+<table class="table table-striped">
+    <th>
+        {% for doc in sector_data %}
+            <td><b>{{ doc['_id'][:12] }}<br>{{ doc['_id'][12:] }}</b></td>
+        {% endfor %}
+    </th>
+    {% for field in sector_data[0].fields %}
+        <tr>
+            <td><b>{{ field }}</b></td>
+            {% for doc in sector_data %}
+            <td>{{ doc.fields[field] }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+<a href="{{url_for('get_sector', sector=sector, position=(position-1))}}"><button class="btn btn-secondary">Page précédente</button></a>
+<a> - Page {{ position}} - </a>
+<a href="{{url_for('get_sector', sector=sector, position=(position+1))}}"><button class="btn btn-secondary">Page suivante</button></a>
+<p></p><a href="{{url_for('index')}}"><button class="btn btn-primary">Retour à l'accueil</button></a>
+
+{% endblock %}

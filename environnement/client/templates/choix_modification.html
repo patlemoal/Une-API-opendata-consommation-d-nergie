@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST" action="http://127.0.0.1:5000/document/formulaire">
+        <label>Veuillez entrer un Id de document valide :</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">id</span>
+                <input type="text" class="form-control"  name="id" placeholder="Entrez un ID" aria-label="Username" aria-describedby="addon-wrapping"  value="" required>
+                <button type="submit" class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+            </div>
+    </form>
+    <a href="{{url_for('index')}}"><button class="btn btn-primary">Retour à l'accueil</button></a>
+{% endblock %}

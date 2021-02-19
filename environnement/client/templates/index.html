@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Index</h1>
+
+    <div id="page">
+      <div id="liste">
+        <h2>Données par région</h2>
+          <div class="btn-group">
+                <a href="{{url_for('region_data', code_region=84)}}"><button class="btn btn-primary">Auvergne-Rhône-Alpes</button></a>
+                <a href="{{url_for('region_data', code_region=27)}}"><button class="btn btn-primary">Bourgogne-Franche-Comté</button></a>
+                <a href="{{url_for('region_data', code_region=53)}}"><button class="btn btn-primary">Bretagne</button></a>
+                <a href="{{url_for('region_data', code_region=24)}}"><button class="btn btn-primary">Centre-Val de Loire</button></a>
+                <a href="{{url_for('region_data', code_region=94)}}"><button class="btn btn-primary">Corse</button></a>
+                <a href="{{url_for('region_data', code_region=44)}}"><button class="btn btn-primary">Grand Est</button></a>
+                <a href="{{url_for('region_data', code_region=32)}}"><button class="btn btn-primary">Hauts-de-France</button></a>
+                <a href="{{url_for('region_data', code_region=11)}}"><button class="btn btn-primary">Île-de-France</button></a>
+                <a href="{{url_for('region_data', code_region=28)}}"><button class="btn btn-primary">Normandie</button></a>
+                <a href="{{url_for('region_data', code_region=75)}}"><button class="btn btn-primary">Nouvelle-Aquitaine</button></a>
+                <a href="{{url_for('region_data', code_region=76)}}"><button class="btn btn-primary">Occitanie</button></a>
+                <a href="{{url_for('region_data', code_region=52)}}"><button class="btn btn-primary">Pays de la Loire</button></a>
+                <a href="{{url_for('region_data', code_region=93)}}"><button class="btn btn-primary">Provence-Alpes-Côte d'Azur</button></a>
+          </div> 
+          <div class="btn-group">
+              <a href="{{url_for('region_data', code_region=1)}}"><button class="btn btn-info">Guadeloupe</button></a>
+              <a href="{{url_for('region_data', code_region=2)}}"><button class="btn btn-info">Martinique</button></a>
+              <a href="{{url_for('region_data', code_region=3)}}"><button class="btn btn-info">Guyane</button></a>
+              <a href="{{url_for('region_data', code_region=4)}}"><button class="btn btn-info">La Réunion</button></a>
+              <a href="{{url_for('region_data', code_region=6)}}"><button class="btn btn-info">Mayotte</button></a>
+          </div> 
+          <h2>Données par filière</h2>
+          <div class="btn-group">
+              <a href="{{url_for('get_sector', sector='Electricité', position=0)}}"><button class="btn btn-warning">Electricité</button></a>
+              <a href="{{url_for('get_sector', sector='Gaz', position=0)}}"><button class="btn btn-warning">Gaz</button></a>
+          </div> 
+          <h2>Opérations</h2>
+          <div class="btn-group">
+                <a href="{{url_for('document_choix')}}"><button class="btn btn-success">Modifier un document</button></a>
+                <a href="{{url_for('suppression_choix')}}"><button class="btn btn-danger">Supprimer un document</button></a>
+          </div>
+        </div> 
+    </div>
+{% endblock %}
